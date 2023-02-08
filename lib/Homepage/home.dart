@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'category_data.dart';
+import 'category.dart';
 
 class Home extends StatelessWidget{
   const Home({super.key});
@@ -40,7 +42,9 @@ class Home extends StatelessWidget{
               (BuildContext context, int index) {
                 return Column(
                   children: [
-                    Text('Categories'),
+                    Expanded(
+                      child: Text('Categories'),
+                    ),
 
                   ],
                 );
