@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Homepage/item_card.dart';
 import 'category_data.dart';
 import 'category.dart';
 
@@ -39,9 +40,11 @@ class Home extends StatelessWidget{
             delegate: SliverChildListDelegate(
               [
                 Text('Categories'),
+                ItemCard(categoryData[0]['name']!, categoryData[0]['image']!),
               ]
             )
-          )
+          ),
+
         ],
       ),
     );
