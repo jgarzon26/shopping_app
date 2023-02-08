@@ -22,12 +22,10 @@ class Home extends StatelessWidget{
             delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                 return const ListTile(
-                  title: Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search here...',
-                        border: InputBorder.none,
-                      ),
+                  title: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search here...',
+                      border: InputBorder.none,
                     ),
                   ),
                   trailing: Icon(Icons.camera_alt),
@@ -38,20 +36,12 @@ class Home extends StatelessWidget{
           ),
           //CATEGORIES
           SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Column(
-                  children: [
-                    Expanded(
-                      child: Text('Categories'),
-                    ),
-
-                  ],
-                );
-              },
-              childCount: 1,
-            ),
-          ),
+            delegate: SliverChildListDelegate(
+              [
+                Text('Categories'),
+              ]
+            )
+          )
         ],
       ),
     );
