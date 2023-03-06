@@ -11,7 +11,10 @@ class Home extends StatelessWidget{
       body: CustomScrollView(
         slivers: [
           SliverPadding(
-            padding: const EdgeInsets.all(25),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
             sliver: SliverAppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,
@@ -29,6 +32,7 @@ class Home extends StatelessWidget{
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontSize: 23,
                     color: kMainColor,
+                    fontWeight: FontWeight.bold,
                   ),
               ),
               actions: [
@@ -56,7 +60,19 @@ class Home extends StatelessWidget{
               ],
             ),
           ),
-          
+          SliverToBoxAdapter(
+            child: Container(
+              height: 500,
+              padding: const EdgeInsets.only(top: 15,),
+              decoration: const BoxDecoration(
+                color: kBGColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(35),
+                  topRight: Radius.circular(35),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
