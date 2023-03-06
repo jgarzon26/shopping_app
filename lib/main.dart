@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:shopping_app/constants.dart';
+import 'screens/home/home.dart';
 
 void main() => runApp(
   MaterialApp(
-    home: Home(),
+    debugShowCheckedModeBanner: false,
+    theme: ThemeData(
+      scaffoldBackgroundColor: Colors.white,
+      primaryColor: kMainColor,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+    ),
+    routes: {
+      '/': (context) => const Home(),
+    },
   )
 );
