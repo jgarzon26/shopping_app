@@ -2,7 +2,7 @@ import 'dart:math';
 import 'category_data.dart';
 
 const minPrice = 100, maxPrice = 1000;
-const minDiscount = 0, maxDiscount = 70;
+const minDiscount = 20, maxDiscount = 70;
 
 List<Map<String, dynamic>> products = [
   {
