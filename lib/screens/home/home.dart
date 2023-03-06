@@ -1,6 +1,8 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constants.dart';
+import 'package:shopping_app/demoData/category_data.dart';
+import 'package:shopping_app/screens/home/widgets/categories.dart';
 
 class Home extends StatelessWidget{
   const Home({super.key});
@@ -71,6 +73,62 @@ class Home extends StatelessWidget{
                   topRight: Radius.circular(35),
                 ),
               ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(30),
+                      ),
+                    ),
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 15,),
+                      title: TextFormField(
+                        decoration: const InputDecoration(
+                          hintText: "Search here...",
+                          border: InputBorder.none,
+                        ),
+                      ),
+                      trailing: const Icon(
+                        Icons.camera_alt,
+                        color: kMainColor,
+                        size: 27,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      "Categories",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: kMainColor,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20,),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(
+                        category.length,
+                            (index) => Categories(
+                          name: category[index]['name']!,
+                          image: category[index]['image']!,
+                          onTap: () {},
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -78,3 +136,4 @@ class Home extends StatelessWidget{
     );
   }
 }
+
