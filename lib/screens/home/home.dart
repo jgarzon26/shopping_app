@@ -6,6 +6,8 @@ import 'package:shopping_app/screens/home/widgets/categories.dart';
 import 'package:shopping_app/screens/home/widgets/search_bar.dart';
 import 'package:shopping_app/screens/home/widgets/section_title.dart';
 
+import '../../demoData/Product_data.dart';
+
 class Home extends StatelessWidget{
   const Home({super.key});
 
@@ -66,7 +68,6 @@ class Home extends StatelessWidget{
           ),
           SliverToBoxAdapter(
             child: Container(
-              height: 500,
               padding: const EdgeInsets.only(top: 15,),
               decoration: const BoxDecoration(
                 color: kBGColor,
@@ -79,9 +80,7 @@ class Home extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SearchBar(),
-                  const SizedBox(height: 20,),
                   const SectionTitle(title: 'Categories',),
-                  const SizedBox(height: 20,),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -94,6 +93,107 @@ class Home extends StatelessWidget{
                         ),
                       ),
                     ),
+                  ),
+                  const SectionTitle(title: 'Best Selling'),
+                  GridView.count(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.68,
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.only(top: 0,),
+                    children: [
+                      Container(
+                        height: 200,
+                        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                        padding: const EdgeInsets.only(left: 10, right: 10, top: 5,),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                    color: kMainColor,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    '-${products[0]['discount']}%',
+                                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Container(
+                                margin: const EdgeInsets.all(10),
+                                child: Image.asset(
+                                  products[0]['image']!,
+                                  width: 120,
+                                  height: 120,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(bottom: 8),
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                '${products[0]['title']}',
+                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: kMainColor,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              '${products[0]['subtitle']}',
+                              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                fontSize: 15,
+                                color: kMainColor,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '\$${products[0]['price']}',
+                                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: kMainColor,
+                                    ),
+                                  ),
+                                  const Icon(
+                                    Icons.shopping_cart_checkout,
+                                    color: kMainColor,
+                                    size: 20,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
