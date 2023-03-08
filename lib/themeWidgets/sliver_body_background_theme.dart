@@ -8,18 +8,16 @@ class SliverBodyBackgroundTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Container(
-        padding: const EdgeInsets.only(top: 15, bottom: 20),
-        decoration: const BoxDecoration(
-          color: kBGColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(35),
-            topRight: Radius.circular(35),
-          ),
+    return Container(
+      padding: const EdgeInsets.only(top: 15, bottom: 20),
+      decoration: const BoxDecoration(
+        color: kBGColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(35),
+          topRight: Radius.circular(35),
         ),
-        child: child,
       ),
+      child: child,
     );
   }
 }

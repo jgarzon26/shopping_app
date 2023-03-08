@@ -20,6 +20,7 @@ class Home extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        physics: const PageScrollPhysics(),
         slivers: [
           SliverAppbarTheme(
               leading: IconButton(
@@ -57,45 +58,48 @@ class Home extends StatelessWidget{
                 ),
               ],
           ),
-          SliverBodyBackgroundTheme(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SearchBar(),
-                const SectionTitle(title: 'Categories',),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(
-                      category.length,
-                          (index) => Categories(
-                        name: category[index]['name']!,
-                        image: category[index]['image']!,
-                        onTap: () {},
+          SliverToBoxAdapter(
+            child: SliverBodyBackgroundTheme(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SearchBar(),
+                  const SectionTitle(title: 'Categories',),
+                  SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(
+                        category.length,
+                            (index) => Categories(
+                          name: category[index]['name']!,
+                          image: category[index]['image']!,
+                          onTap: () {},
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SectionTitle(title: 'Best Selling'),
-                GridView.count(
-                  physics: const NeverScrollableScrollPhysics(),
-                  mainAxisSpacing: 20,
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.68,
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.only(top: 0,),
-                  children: List.generate(
-                    products.length, (index) => ItemCard(
-                    title: products[index]['title']!,
-                    subtitle: products[index]['subtitle']!,
-                    price: products[index]['price']!,
-                    discount: products[index]['discount']!,
-                    image: products[index]['image']!,
-                    onTap: () {},
-                   ),
+                  const SectionTitle(title: 'Best Selling'),
+                  GridView.count(
+                    physics: const NeverScrollableScrollPhysics(),
+                    mainAxisSpacing: 20,
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.68,
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.only(top: 0,),
+                    children: List.generate(
+                      products.length, (index) => ItemCard(
+                      title: products[index]['title']!,
+                      subtitle: products[index]['subtitle']!,
+                      price: products[index]['price']!,
+                      discount: products[index]['discount']!,
+                      image: products[index]['image']!,
+                      onTap: () {},
+                     ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

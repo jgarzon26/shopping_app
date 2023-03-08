@@ -35,14 +35,76 @@ class Cart extends StatelessWidget {
               ),
             ],
           ),
-          SliverBodyBackgroundTheme(
-            child: Column(
-              children: [
-                CartItem(),
-              ],
+          SliverFillRemaining(
+            child: SliverBodyBackgroundTheme(
+              child: Column(
+                children: [
+                  CartItem(),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: kMainColor,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                          child: const Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "Add Coupon Code",
+                            style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                              color: kMainColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          height: 130,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Total",
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      color: kMainColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
+                  Text(
+                    "\$250",
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      color: kMainColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
