@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constants.dart';
+import 'package:shopping_app/screens/cart/cart.dart';
 import 'screens/home/home.dart';
 
 void main() => runApp(
@@ -12,6 +13,7 @@ void main() => runApp(
     ),
     routes: {
       '/': (context) => const Home(),
+      '/cart': (context) => const Cart(),
     },
   )
 );
