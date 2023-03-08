@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constants.dart';
+import 'package:shopping_app/screens/cart/widgets/cart_item.dart';
 import 'package:shopping_app/themeWidgets/sliver_appbar_theme.dart';
 import 'package:shopping_app/themeWidgets/sliver_body_background_theme.dart';
 
@@ -33,6 +34,13 @@ class Cart extends StatelessWidget {
                 onPressed: () {},
               ),
             ],
+          ),
+          SliverBodyBackgroundTheme(
+            child: Column(
+              children: [
+                CartItem(),
+              ],
+            ),
           ),
         ],
       ),
