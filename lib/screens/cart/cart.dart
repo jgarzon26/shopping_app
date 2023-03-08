@@ -62,6 +62,7 @@ class Cart extends StatelessWidget {
                             style: Theme.of(context).textTheme.bodyText1!.copyWith(
                               color: kMainColor,
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -101,6 +102,24 @@ class Cart extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 50),
+                  backgroundColor: kMainColor,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                ),
+                onPressed: (){},
+                child: const Text(
+                  "Check Out",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           ),
