@@ -8,6 +8,8 @@ import 'package:shopping_app/screens/home/widgets/categories.dart';
 import 'package:shopping_app/screens/home/widgets/item_card.dart';
 import 'package:shopping_app/screens/home/widgets/search_bar.dart';
 import 'package:shopping_app/screens/home/widgets/section_title.dart';
+import 'package:shopping_app/themeWidgets/sliver_appbar_theme.dart';
+import 'package:shopping_app/themeWidgets/sliver_body_background_theme.dart';
 
 import '../../demoData/Product_data.dart';
 
@@ -19,15 +21,7 @@ class Home extends StatelessWidget{
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 10,
-            ),
-            sliver: SliverAppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              leadingWidth: 40,
+          SliverAppbarTheme(
               leading: IconButton(
                 icon: const Icon(
                   Icons.sort,
@@ -36,14 +30,7 @@ class Home extends StatelessWidget{
                 ),
                 onPressed: () {},
               ),
-              title: Text(
-                  "DP Shop",
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 23,
-                    color: kMainColor,
-                    fontWeight: FontWeight.bold,
-                  ),
-              ),
+              title: "DP Shop",
               actions: [
                 Badge(
                   badgeContent: Text(
@@ -63,61 +50,52 @@ class Home extends StatelessWidget{
                       color: kMainColor,
                       size: 30,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/cart');
+                    },
                   ),
                 ),
               ],
-            ),
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              padding: const EdgeInsets.only(top: 15, bottom: 20),
-              decoration: const BoxDecoration(
-                color: kBGColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(35),
-                  topRight: Radius.circular(35),
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SearchBar(),
-                  const SectionTitle(title: 'Categories',),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(
-                        category.length,
-                            (index) => Categories(
-                          name: category[index]['name']!,
-                          image: category[index]['image']!,
-                          onTap: () {},
-                        ),
+          SliverBodyBackgroundTheme(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SearchBar(),
+                const SectionTitle(title: 'Categories',),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(
+                      category.length,
+                          (index) => Categories(
+                        name: category[index]['name']!,
+                        image: category[index]['image']!,
+                        onTap: () {},
                       ),
                     ),
                   ),
-                  const SectionTitle(title: 'Best Selling'),
-                  GridView.count(
-                    physics: const NeverScrollableScrollPhysics(),
-                    mainAxisSpacing: 20,
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.68,
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.only(top: 0,),
-                    children: List.generate(
-                      products.length, (index) => ItemCard(
-                      title: products[index]['title']!,
-                      subtitle: products[index]['subtitle']!,
-                      price: products[index]['price']!,
-                      discount: products[index]['discount']!,
-                      image: products[index]['image']!,
-                      onTap: () {},
-                     ),
-                    ),
+                ),
+                const SectionTitle(title: 'Best Selling'),
+                GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  mainAxisSpacing: 20,
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.68,
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.only(top: 0,),
+                  children: List.generate(
+                    products.length, (index) => ItemCard(
+                    title: products[index]['title']!,
+                    subtitle: products[index]['subtitle']!,
+                    price: products[index]['price']!,
+                    discount: products[index]['discount']!,
+                    image: products[index]['image']!,
+                    onTap: () {},
+                   ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
