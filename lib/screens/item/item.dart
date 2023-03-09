@@ -231,6 +231,61 @@ class _ItemState extends State<Item> {
           ),
         ],
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 70,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                blurRadius: 10.0,
+                spreadRadius: 3,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '\$${products[0]['price']}',
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                  color: kMainColor,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              ElevatedButton.icon(
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(kMainColor),
+                  padding: MaterialStateProperty.all(const EdgeInsets.symmetric(horizontal: 15, vertical: 13)),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
+                icon: const Icon(
+                  CupertinoIcons.cart_badge_plus,
+                  color: Colors.white,
+                  size: 30,
+                ), label: Text(
+                  'Add to cart',
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
