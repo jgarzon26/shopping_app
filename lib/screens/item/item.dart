@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/constants.dart';
 import 'package:shopping_app/themeWidgets/sliver_appbar_theme.dart';
 
-class Item extends StatelessWidget{
+class Item extends StatefulWidget{
 
-  const Item({super.key, /*required this.productName*/});
+  const Item({super.key});
 
-  //final String productName;
+  @override
+  State<Item> createState() => _ItemState();
+}
+
+class _ItemState extends State<Item> {
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context){
@@ -16,28 +22,26 @@ class Item extends StatelessWidget{
             leading: IconButton(
               icon: const Icon(
                 Icons.arrow_back,
-                color: Colors.black,
+                color: kMainColor,
                 size: 30,
               ),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
-            title: "productName",
+            title: "Product",
             actions: [
               IconButton(
-                isSelected: true,
-                icon: const Icon(
-                  Icons.favorite_border,
+                icon: Icon(
+                  !isFavorite ? Icons.favorite_border : Icons.favorite,
                   color: Colors.red,
                   size: 30,
                 ),
-                selectedIcon: const Icon(
-                  Icons.favorite,
-                  color: Colors.red,
-                  size: 30,
-                ),
-                onPressed: () {},
+                onPressed: () {
+                    setState(() {
+                    isFavorite = !isFavorite;
+                  });
+                },
               ),
             ],
           ),

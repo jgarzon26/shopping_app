@@ -4,12 +4,11 @@ import 'package:shopping_app/demoData/Product_data.dart';
 
 class ItemCard extends StatelessWidget {
   const ItemCard({
-    Key? key, required this.discount, required this.price, required this.title, required this.subtitle, required this.image, required this.onTap,
+    Key? key, required this.discount, required this.price, required this.title, required this.subtitle, required this.image,
   }) : super(key: key);
 
   final int discount, price;
   final String title, subtitle, image;
-  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +50,9 @@ class ItemCard extends StatelessWidget {
             ],
           ),
           InkWell(
-            onTap: onTap,
+            onTap: () {
+              Navigator.pushNamed(context, '/item');
+              },
             child: Container(
               margin: const EdgeInsets.all(10),
               child: Image.asset(
