@@ -94,7 +94,9 @@ class Home extends StatelessWidget{
                       price: products[index]['price']!,
                       discount: products[index]['discount']!,
                       image: products[index]['image']!,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/item');
+                      },
                      ),
                     ),
                   ),

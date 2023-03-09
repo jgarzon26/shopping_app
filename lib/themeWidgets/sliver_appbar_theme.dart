@@ -28,9 +28,7 @@ class SliverAppbarTheme extends StatelessWidget{
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          ...actions,
-        ],
+        actions: actions,
       ),
     );
   }
