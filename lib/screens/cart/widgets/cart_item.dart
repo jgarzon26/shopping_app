@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_app/constants.dart';
 import 'package:shopping_app/demoData/Product_data.dart';
 
-import 'cart_button.dart';
+import '../../../themeWidgets/rating_button.dart';
 
 class CartItem extends StatelessWidget{
   const CartItem({super.key});
@@ -77,7 +77,7 @@ class CartItem extends StatelessWidget{
                 ),
                 Row(
                   children: [
-                    const CartButton(
+                    const RatingButton(
                       icon: CupertinoIcons.plus,
                     ),
                     Container(
@@ -91,7 +91,7 @@ class CartItem extends StatelessWidget{
                         )
                       ),
                     ),
-                    const CartButton(
+                    const RatingButton(
                       icon: CupertinoIcons.minus,
                     ),
                   ],

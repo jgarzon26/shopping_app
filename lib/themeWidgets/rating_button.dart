@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CartButton extends StatelessWidget {
-  const CartButton({
+class RatingButton extends StatelessWidget {
+  const RatingButton({
     Key? key, required this.icon,
   }) : super(key: key);
 
@@ -19,6 +19,7 @@ class CartButton extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 10,
+            offset: const Offset(0, 3), // changes position of shadow
           ),
         ],
       ),
